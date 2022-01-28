@@ -53,13 +53,12 @@ const QuestionCard: React.FC<Props> = ({
                  overflow='hidden'>
                 <Center position="relative">
                 <Image
-                h={[75, 70, 150, 200]}
+                h={[75, 70, 150, 175]}
                 src={`flagssvg/${item}.svg`}
                 alt='Flag Image'
                 />
                 <Center position="absolute" 
                 bg="white"
-
                 borderRadius='lg'
                 boxShadow='xl'
                 rounded='md'>

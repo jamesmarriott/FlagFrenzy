@@ -1,14 +1,20 @@
 import {
   ChakraProvider,
-  theme,
 } from "@chakra-ui/react"
 import Game from './containers/GameHolder'
-import HeaderContain from "./components/Header"
+import "@fontsource/quicksand"
+
+import { extendTheme } from "@chakra-ui/react"
+
+const theme = extendTheme({
+  fonts: {
+    body: 'Quicksand',
+  },
+})
 
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <HeaderContain/>
     <Game/>
   </ChakraProvider>
 )

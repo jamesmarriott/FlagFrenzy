@@ -4,6 +4,8 @@ import {
   Grid
 } from "@chakra-ui/react"
 import React, {useState, useEffect} from 'react'
+import HeaderContain from "../components/Header"
+
 
 import { fetchQuizQuestions } from '../API'
 // import { QuestionType } from '../API'
@@ -132,7 +134,10 @@ const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
   return (
 
     <Box textAlign="center">
-      <Grid minH="100vh" p={3}>
+      <Grid
+      minH="100vh"
+      bgGradient='linear(180deg, #ff008c 0%, rgb(211, 9, 225) 100%)'
+      >
       <VStack spacing={[2,4,6]}>
 
     {!gameStarted && !loading ? <StartMenu
@@ -159,6 +164,7 @@ const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
 
     {gameStarted && !gameOver ? (
     <>
+    <HeaderContain/>
     <QuestionCard
       questionNr={currentQNr + 1}
       totalQuestions={TOTAL_QUESTIONS}

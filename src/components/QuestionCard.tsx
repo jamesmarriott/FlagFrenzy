@@ -59,7 +59,7 @@ const QuestionCard: React.FC<Props> = ({
                 />
                 <Center position="absolute" 
                 bg="white"
-                border='1px'
+
                 borderRadius='lg'
                 boxShadow='xl'
                 rounded='md'>

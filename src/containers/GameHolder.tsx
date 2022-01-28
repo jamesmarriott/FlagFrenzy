@@ -147,7 +147,9 @@ const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     />: null}
 
      {gameOver && 
-     <><GameOver
+     <>
+        <HeaderContain/>
+     <GameOver
         callback={restartGameClick}
         score={score}
         time={time}

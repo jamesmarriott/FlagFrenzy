@@ -1,9 +1,9 @@
-import { Button, Text, Center, ButtonProps, useBreakpointValue } from '@chakra-ui/react'
-import { Box, BoxProps } from '@chakra-ui/layout'
+import { Box, BoxProps, Button, Text, Center, ButtonProps, TextProps, useBreakpointValue } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 
 export const MotionBox = motion<BoxProps>(Box)
 export const MotionButton = motion<ButtonProps>(Button)
+export const MotionText = motion<TextProps>(Text)
 
 const buttonVariants = {
   
@@ -19,16 +19,12 @@ const buttonVariants = {
 
 const containerVariants = {
   hidden: { 
-    y: "-100vh",
-    transition: { ease: 'easeInOut' }
+    opacity: 0,
+    x: '100vw'
   },
   visible: { 
-    y: "0",
-    transition: { duration: .6 }
-  },
-  exit: {
-    x: "-100vh",
-    transition: { ease: 'bounce' }
+    opacity: 1,
+    x: 0
   }
 };
 
@@ -45,40 +41,54 @@ const StartMenu: React.FC<Props> = ({
 }) => {
 
     return (
-      <Center>
+      <Center
+      minH={"100vh"}
+      >
           <MotionBox 
           p={[2,4,10]}
           display='grid'
           gap={8}
-          variants={containerVariants}
-           initial="hidden"
-          animate="visible"
-          exit="exit"
           >
-            <Text
+            <MotionText
             color={'white'}
             fontWeight={700}
             lineHeight={1.2}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
             fontSize={useBreakpointValue({ base: '3xl', sm: '4xl', md: '5xl', lg: '6xl' })}>
             🏁Flag Frenzy🏁
-          </Text>
-          <Text
+          </MotionText>
+          <MotionText
             color={'white'}
             fontWeight={400}
             lineHeight={2}
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            transition={{ duration: '1.5'}}
             fontSize={useBreakpointValue({ base: 'xl', sm: '2xl', md: '3xl', lg: '4xl' })}
             >
             How many flags do you know?
-          </Text>
+           </MotionText>
             <MotionButton
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            transition={{ duration: '1.5'}}
             p={[2,4,8]}
             border={"2px solid white"}
             _hover={{
               background: "transparent",
             }}
+            _active={{
+              background: "transparent",
+            }}
+            _focus={{
+              background: "transparent",
+            }}
             borderRadius="full"
             color={'white'}
-            bg={'transparent'}
+            disabled={!countstart ? false : true}
+            variant='outline'
             variants={buttonVariants} 
             fontSize={useBreakpointValue({ base: 'lg', sm: 'xl', md: '2xl', lg: '3xl'})}
             onClick={callback}
